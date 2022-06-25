@@ -7,12 +7,16 @@ const ArtistList = () => {
 
     useEffect(() => {
         fetch('http://localhost:9292/artists')
-        .then(res => res.json)
-        .then(res => console.log(res))
+        .then((res) => res.json)
+        .then((data) => console.log(data))
     }, [])
 
+    const artistcards = artists.map((artist, index) => <Artist key={index} artist={artist}/>)
+
   return (
-    <h1>{artists.map(artist => <Artist artist={artist}/>)}</h1>
+    <ul>
+        <li>{artistcards}</li>
+    </ul>
   )
 }
 
