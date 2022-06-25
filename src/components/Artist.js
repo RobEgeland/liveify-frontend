@@ -1,11 +1,11 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Artist = ({ artist }) => {
   return (
-    <div>
-        <h1>{artist.name}</h1>
-        <h2>{artist.genre}</h2>
-    </div>
+    <li>
+        <NavLink to={`/artits/${artist.id}`}><h3>{artist.name}</h3></NavLink>
+    </li>
   )
 }
 
