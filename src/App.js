@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import ArtistList from './components/ArtistList';
 import ArtistDetails from './components/ArtistDetails';
 import ConcertList from './components/ConcertList';
+import ConcertDetails from './components/ConcertDetails';
 import UserList from './components/UserList';
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/artists" element={ <ArtistList /> }/>
           <Route exact path="/artists/:id" element={ <ArtistDetails />}/>
           <Route exact path="/concerts" element={ <ConcertList /> }/>
+          <Route exact path="/concerts/:id" element={ <ConcertDetails />}/>
           <Route exact path="/users" element={ <UserList /> }/>
         </Routes>
       </div>
