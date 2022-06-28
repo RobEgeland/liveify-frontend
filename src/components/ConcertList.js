@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 import Concert from './Concert'
 
 const ConcertList = () => {
@@ -21,6 +22,7 @@ const ConcertList = () => {
   }else {
     return (
   <ul>
+      <NavLink to={"/concerts/new"}><button>Add new concert</button></NavLink>
       <p>{concertcards}</p>
   </ul>
 )

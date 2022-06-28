@@ -8,6 +8,7 @@ import ConcertList from './components/ConcertList';
 import ConcertDetails from './components/ConcertDetails';
 import UserList from './components/UserList';
 import UserDetails from './components/UserDetails';
+import NewConcert from './components/NewConcert';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/artists/:id" element={ <ArtistDetails />}/>
           <Route exact path="/concerts" element={ <ConcertList /> }/>
           <Route exact path="/concerts/:id" element={ <ConcertDetails />}/>
+          <Route exact path="/concerts/new" element={ <NewConcert />} />
           <Route exact path="/users" element={ <UserList /> }/>
           <Route exact path="/users/:id" element={ <UserDetails /> }/>
         </Routes>
