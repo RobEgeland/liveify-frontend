@@ -7,6 +7,7 @@ import ArtistDetails from './components/ArtistDetails';
 import ConcertList from './components/ConcertList';
 import ConcertDetails from './components/ConcertDetails';
 import UserList from './components/UserList';
+import UserDetails from './components/UserDetails';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <Router>
       <div className="App">
         <NavBar />
+        <h1>Liveify</h1>
         <Routes>
           <Route exact path="/" element={ <Home /> }/>
           <Route exact path="/artists" element={ <ArtistList /> }/>
@@ -23,6 +25,7 @@ function App() {
           <Route exact path="/concerts" element={ <ConcertList /> }/>
           <Route exact path="/concerts/:id" element={ <ConcertDetails />}/>
           <Route exact path="/users" element={ <UserList /> }/>
+          <Route exact path="/users/:id" element={ <UserDetails /> }/>
         </Routes>
       </div>
     </Router>
