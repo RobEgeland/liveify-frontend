@@ -22,7 +22,7 @@ const ConcertList = () => {
   }else {
     return (
   <ul>
-      <NavLink to={"/concerts/new"}><button>Add new concert</button></NavLink>
+      
       <p>{concertcards}</p>
   </ul>
 )

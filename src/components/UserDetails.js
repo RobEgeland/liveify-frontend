@@ -24,6 +24,7 @@ const UserDetails = () => {
       }else {
         return (
       <div>
+            <NavLink to={"/concerts/new"}><button>Add new concert</button></NavLink>
             <h1>{user.name}</h1> 
             <h2>{user.age}</h2>
             {/* {concertcard} */}
