@@ -16,9 +16,15 @@ const UserList = () => {
   }, [])
 
   const usercard = users.map((user, index) => <User key={index} user={user} />)
-  return (
-    <ul>{usercard}</ul>
-  )
+  if (loading) {
+    <h1>Loading...</h1>
+  }else {
+    return (
+  <ul>
+      <p>{usercard}</p>
+  </ul>
+)
+  }
 }
 
 export default UserList

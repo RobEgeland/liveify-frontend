@@ -23,7 +23,8 @@ const ConcertDetails = () => {
       <div>
           <h1>{concert.name}</h1> 
           <h2>{concert.venue}</h2>
-          <NavLink to={`/artists/${concert.artist.id}`}><h3>{concert.artist.name}</h3></NavLink> 
+          <ul><NavLink to={`/artists/${concert.artist.id}`}><h3>{concert.artist.name}</h3></NavLink></ul>
+           
       </div>
     )}
     }

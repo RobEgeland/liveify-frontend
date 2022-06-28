@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, NavLink} from 'react-router-dom'
 
 const ArtistDetails = () => {
     const [artist, setArtist] = useState(null)
@@ -22,8 +22,7 @@ const ArtistDetails = () => {
     <div>
         <h1>{artist.name}</h1> 
         <h2>{artist.genre}</h2>
-        <h3>{artist.concerts[0].name}</h3> 
-        {/* need to add concert cards for these */}
+       <NavLink to={`/concerts/${artist.concerts[0].id}`}><h3>{artist.concerts[0].name}</h3> </NavLink>
     </div>
   )
     }
