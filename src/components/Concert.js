@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom'
 
 const Concert = ({concert}) => {
   return (
-    <li>
-        <NavLink to={`/concerts/${concert.id}`}><h3>{concert.name}</h3></NavLink>
-    </li>
+    <div>
+        <NavLink to={`/concerts/${concert.id}`}><li>{concert.name}</li></NavLink>
+    </div>
   )
 }
 

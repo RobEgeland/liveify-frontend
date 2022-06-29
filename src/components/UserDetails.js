@@ -7,18 +7,18 @@ const UserDetails = () => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
-
+   
     useEffect(() => {
         fetch(`http://localhost:9292/users/${id}`)
         .then(res => res.json())
         .then(data => {
             setUser(data)
             setLoading(false)
+            
         })
         
     }, [])
 
-    // const concertcard = user.concerts.map((concert) => <NavLink to={`/concerts/${concert.id}`}><h3>{concert.name}</h3></NavLink>)
     if (loading) {
         <h1>Loading...</h1>
       }else {
@@ -27,6 +27,8 @@ const UserDetails = () => {
             <NavLink to={"/concerts/new"}><button>Add new concert</button></NavLink>
             <h1>{user.name}</h1> 
             <h2>{user.age}</h2>
+            <h4>Concerts {user.name} has attended</h4>
+            {user.concerts.map((concert, index) => <Concert concert={concert} key={index}/>)}
             {/* {concertcard} */}
       </div>
     )}
