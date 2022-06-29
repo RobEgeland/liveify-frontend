@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Home from './components/Home';
 import NavBar from './components/NavBar';
@@ -12,6 +12,13 @@ import NewConcert from './components/NewConcert';
 
 
 function App() {
+  const [artists, setArtists] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:9292/artists')
+    .then(res => res.json())
+    .then(data => setArtists(data))
+  }, [])
 
 
   return (
@@ -25,7 +32,7 @@ function App() {
           <Route exact path="/artists/:id" element={ <ArtistDetails />}/>
           <Route exact path="/concerts" element={ <ConcertList /> }/>
           <Route exact path="/concerts/:id" element={ <ConcertDetails />}/>
-          <Route exact path="/concerts/new" element={ <NewConcert />} />
+          <Route exact path="/users/:id/new" element={ <NewConcert artists={artists}/>} />
           <Route exact path="/users" element={ <UserList /> }/>
           <Route exact path="/users/:id" element={ <UserDetails /> }/>
         </Routes>

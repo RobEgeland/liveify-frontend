@@ -24,12 +24,11 @@ const UserDetails = () => {
       }else {
         return (
       <div>
-            <NavLink to={"/concerts/new"}><button>Add new concert</button></NavLink>
             <h1>{user.name}</h1> 
             <h2>{user.age}</h2>
+            <NavLink to={`/users/${user.id}/new`}><button>Add new concert</button></NavLink>
             <h4>Concerts {user.name} has attended</h4>
             {user.concerts.map((concert, index) => <Concert concert={concert} key={index}/>)}
-            {/* {concertcard} */}
       </div>
     )}
 }
