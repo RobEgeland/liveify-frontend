@@ -33,7 +33,7 @@ const NewConcert = ({artists}) => {
   function handleArtistChange(e) {
     setState({
       ...state,
-      [e.target.name]: e.target.value
+      artist_id: e.target.value
     })
   }
 
@@ -48,7 +48,7 @@ const NewConcert = ({artists}) => {
       headers,
       body: JSON.stringify(state)
     }
-    fetch(`http://localhost:9292/users/${id}/new`, options)
+    fetch(`http://localhost:9292/concerts`, options)
     navigate(`/users/${id}`)
   }
 
