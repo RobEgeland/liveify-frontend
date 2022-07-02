@@ -7,7 +7,7 @@ const UserList = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch("http://localhost:9292/users")
+    fetch("http://localhost:9393/users")
     .then(res => res.json())
     .then(data => {
       setLoading(false)

@@ -9,7 +9,7 @@ const UserDetails = () => {
     const { id } = useParams()
    
     useEffect(() => {
-        fetch(`http://localhost:9292/users/${id}`)
+        fetch(`http://localhost:9393/users/${id}`)
         .then(res => res.json())
         .then(data => {
             setUser(data)
@@ -28,7 +28,7 @@ const UserDetails = () => {
             <h2>{user.age}</h2>
             <NavLink to={`/users/${user.id}/new`}><button>Add new concert</button></NavLink>
             <h4>Concerts {user.name} has attended</h4>
-            {user.concerts.map((concert, index) => <Concert concert={concert} key={index}/>)}
+            {user.concerts.map((concert, index) => <><Concert concert={concert} key={index}/> <NavLink to={`/concerts/${concert.id}/update`}><button>Edit Concert</button></NavLink></>)}
       </div>
     )}
 }

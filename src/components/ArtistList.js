@@ -7,7 +7,7 @@ const ArtistList = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch("http://localhost:9292/artists")
+        fetch("http://localhost:9393/artists")
         .then((res) => res.json())
         .then((res) => {
           setLoading(false)

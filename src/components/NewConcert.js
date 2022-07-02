@@ -15,7 +15,7 @@ const NewConcert = ({artists}) => {
   })
 
   useEffect(() => {
-    fetch(`http://localhost:9292/users/${id}`)
+    fetch(`http://localhost:9393/users/${id}`)
     .then(res => res.json())
     .then(data => {
       setUser(data)
@@ -31,6 +31,7 @@ const NewConcert = ({artists}) => {
   }
 
   function handleArtistChange(e) {
+    console.log(e.target.value)
     setState({
       ...state,
       artist_id: e.target.value
@@ -48,7 +49,7 @@ const NewConcert = ({artists}) => {
       headers,
       body: JSON.stringify(state)
     }
-    fetch(`http://localhost:9292/concerts`, options)
+    fetch(`http://localhost:9393/concerts`, options)
     navigate(`/users/${id}`)
   }
 
@@ -79,7 +80,7 @@ const NewConcert = ({artists}) => {
             <label>Who did you see?</label>
             <br/>
             <select name='artist_id' value={state.artist_id} onChange={handleArtistChange}>
-              {artists.map((artist, index) => <option key={index} value={index} >{artist.name}</option>)}
+              {artists.map((artist, index) => <option key={index + 1} value={index + 1} >{artist.name}</option>)}
             </select>
         </div>
         <br></br>

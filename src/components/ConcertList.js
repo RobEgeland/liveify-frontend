@@ -8,7 +8,7 @@ const ConcertList = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch("http://localhost:9292/concerts")
+    fetch("http://localhost:9393/concerts")
     .then(res => res.json())
     .then(data => {
       setLoading(false)

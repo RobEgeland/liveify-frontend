@@ -8,7 +8,7 @@ const ConcertDetails = () => {
     const { id } = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:9292/concerts/${id}`)
+        fetch(`http://localhost:9393/concerts/${id}`)
         .then(res => res.json())
         .then(data => {
             setLoading(false)
