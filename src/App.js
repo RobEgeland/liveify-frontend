@@ -14,11 +14,18 @@ import UpdateConcert from './components/UpdateConcert';
 
 function App() {
   const [artists, setArtists] = useState([])
+  const [concerts, setConcerts] = useState([])
 
   useEffect(() => {
     fetch('http://localhost:9393/artists')
     .then(res => res.json())
     .then(data => setArtists(data))
+  }, [])
+
+  useEffect(() => {
+    fetch('http://localhost:9393/concerts')
+    .then(res => res.json())
+    .then(data => setConcerts(data))
   }, [])
 
 
@@ -36,7 +43,7 @@ function App() {
           <Route exact path="/concerts/:id/update" element={ <UpdateConcert artists={artists}/>}/>
           <Route exact path="/users/:id/new" element={ <NewConcert artists={artists}/>} />
           <Route exact path="/users" element={ <UserList /> }/>
-          <Route exact path="/users/:id" element={ <UserDetails /> }/>
+          <Route exact path="/users/:id" element={ <UserDetails concerts={concerts} /> }/>
         </Routes>
       </div>
     </Router>

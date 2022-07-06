@@ -76,7 +76,7 @@ const UpdateConcert = ({artists}) => {
             <label>Change Who you saw</label>
             <br/>
             <select name='artist_id' value={state.artist_id} onChange={handleArtistChange}>
-              {artists.map((artist, index) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
+              {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
             </select>
         </div>
         <br></br>
