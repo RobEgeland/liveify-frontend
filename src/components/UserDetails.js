@@ -1,14 +1,24 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useParams, NavLink } from 'react-router-dom'
+import { useParams, NavLink, useNavigate } from 'react-router-dom'
 import Concert from './Concert'
 
 const UserDetails = ({concerts}) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
+    const navigate = useNavigate()
 
-    
+    useEffect(() => {
+      fetch(`http://localhost:9393/users/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        setUser(data)
+        setLoading(false)
+      })
+    }, [])
+    const userConcerts = concerts.filter(concert => concert.user_id === parseInt(id))
+
     const handleDelete = (id) => {
       const headers = {
         "Accept": "application/json",
@@ -19,17 +29,10 @@ const UserDetails = ({concerts}) => {
         headers
       }
       fetch(`http://localhost:9393/concerts/${id}`, options)
+      navigate(`/concerts`)
+
     }
-    useEffect(() => {
-      fetch(`http://localhost:9393/users/${id}`)
-      .then(res => res.json())
-      .then(data => {
-        setUser(data)
-        setLoading(false)
-      })
-    }, [])
     
-    const userConcerts = concerts.filter(concert => concert.user_id === id)
 
     if (loading) {
         <h1>Loading...</h1>

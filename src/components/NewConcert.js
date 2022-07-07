@@ -50,7 +50,7 @@ const NewConcert = ({artists}) => {
       body: JSON.stringify(state)
     }
     fetch(`http://localhost:9393/concerts`, options)
-    navigate(`/users/${id}`)
+    navigate(`/concerts`)
   }
 
   if (loading) {
