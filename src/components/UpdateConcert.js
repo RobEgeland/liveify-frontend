@@ -31,13 +31,15 @@ const UpdateConcert = ({artists, concerts}) => {
     
     useEffect(() => {
       const updateConcert = concerts.filter(concert => concert.id === parseInt(id))
+      console.log(updateConcert.location)
       setConcert({
         name: updateConcert.name,
         location: updateConcert.location,
-        venue:updateConcert.venue,
-        artist_id: updateConcert.artist_id
+        venue: updateConcert.venue,
+        artist_id: updateConcert.artist_id,
+        user_id: updateConcert.user_id
       })
-      console.log()
+      console.log(concert)
     },[])
     
 
