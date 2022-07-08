@@ -37,6 +37,7 @@ const UpdateConcert = ({artists, concerts}) => {
         venue:updateConcert.venue,
         artist_id: updateConcert.artist_id
       })
+      console.o
     },[])
     
 
