@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useParams, NavLink, useNavigate } from 'react-router-dom'
 import Concert from './Concert'
 
-const UserDetails = ({concerts}) => {
+const UserDetails = ({concerts, users}) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
@@ -43,7 +43,7 @@ const UserDetails = ({concerts}) => {
             <h2>{user.age}</h2>
             <NavLink to={`/users/${user.id}/new`}><button>Add new concert</button></NavLink>
             <h4>Concerts {user.name} has attended</h4>
-            {userConcerts.map((concert, index) => <><Concert concert={concert} key={index}/> <NavLink to={`/concerts/${concert.id}/update`}><button>Edit Concert</button></NavLink><button onClick={() => handleDelete(concert.id)}>Delete Concert</button></>)}
+            {userConcerts.map((concert, index) => <><Concert concert={concert} key={concert.id}/> <NavLink to={`/concerts/${concert.id}/update`}><button>Edit Concert</button></NavLink><button onClick={() => handleDelete(concert.id)}>Delete Concert</button></>)}
       </div>
     )}
 }
