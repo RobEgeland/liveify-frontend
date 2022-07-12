@@ -2,17 +2,13 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import User from './User'
 
-const UserList = () => {
+const UserList = ({people}) => {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch("http://localhost:9393/users")
-    .then(res => res.json())
-    .then(data => {
-      setLoading(false)
-      setUsers(data)
-    })
+    setUsers(people)
+    setLoading(false)
   }, [])
 
   const usercard = users.map((user, index) => <User key={index} user={user} />)

@@ -33,7 +33,7 @@ function App() {
     fetch('http://localhost:9393/users')
     .then(res => res.json())
     .then(data => setUsers(data))
-  })
+  }, [])
 
 
   return (
@@ -49,7 +49,7 @@ function App() {
           <Route exact path="/concerts/:id" element={ <ConcertDetails />}/>
           <Route exact path="/concerts/:id/update" element={ <UpdateConcert concerts={concerts} artists={artists}/>}/>
           <Route exact path="/users/:id/new" element={ <NewConcert artists={artists}/>} />
-          <Route exact path="/users" element={ <UserList /> }/>
+          <Route exact path="/users" element={ <UserList people={users} /> }/>
           <Route exact path="/users/:id" element={ <UserDetails users={users} concerts={concerts} /> }/>
         </Routes>
       </div>

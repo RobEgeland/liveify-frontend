@@ -6,7 +6,6 @@ const ConcertDetails = () => {
     const [concert, setConcert] = useState(null)
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
-
     useEffect(() => {
         fetch(`http://localhost:9393/concerts/${id}`)
         .then(res => res.json())
