@@ -10,8 +10,8 @@ const ConcertDetails = () => {
         fetch(`http://localhost:9393/concerts/${id}`)
         .then(res => res.json())
         .then(data => {
-            setLoading(false)
             setConcert(data)
+            setLoading(false)
         })
     }, [])
 
