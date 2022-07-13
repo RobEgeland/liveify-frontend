@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react'
 import { useParams, NavLink, useNavigate } from 'react-router-dom'
 import Concert from './Concert'
 
-const UserDetails = ({concerts, users}) => {
+const UserDetails = () => {
     const [user, setUser] = useState(null)
+    const [concerts, setConcerts] = useState([])
     const [loading, setLoading] = useState(true)
+    
     const { id } = useParams()
     const navigate = useNavigate()
     // useEffect(() => {
@@ -13,17 +15,20 @@ const UserDetails = ({concerts, users}) => {
     //   setUser(currentUser[0])
     //   setLoading(false)
     // }, [])
+    const userConcerts = concerts.filter(concert => concert.user_id === parseInt(id))
 
     useEffect(() => {
       fetch(`http://localhost:9393/users/${id}`)
       .then(res => res.json())
       .then(data => {
         setUser(data)
+        setConcerts(data.concerts)
         setLoading(false)
       })
-    })
+    }, [id, navigate])
 
-    const userConcerts = concerts.filter(concert => concert.user_id === parseInt(id))
+
+    
 
     const handleDelete = (id) => {
       const headers = {
@@ -35,7 +40,10 @@ const UserDetails = ({concerts, users}) => {
         headers
       }
       fetch(`http://localhost:9393/concerts/${id}`, options)
-      navigate(`/concerts`)
+      navigate(`/users/${user.id}`)
+      const filterConcerts = concerts.filter(concert => concert.id !== id)
+      setConcerts(filterConcerts)
+      
 
     }
     
@@ -49,7 +57,7 @@ const UserDetails = ({concerts, users}) => {
             <h2>{user.age}</h2>
             <NavLink to={`/users/${user.id}/new`}><button>Add new concert</button></NavLink>
             <h4>Concerts {user.name} has attended</h4>
-            {userConcerts.map((concert, index) => <><Concert concert={concert} key={concert.id}/> <NavLink to={`/concerts/${concert.id}/update`}><button>Edit Concert</button></NavLink><button onClick={() => handleDelete(concert.id)}>Delete Concert</button></>)}
+            {concerts.map((concert, index) => <><Concert concert={concert} key={concert.id}/> <NavLink to={`/concerts/${concert.id}/update`}><button>Edit Concert</button></NavLink><button onClick={() => handleDelete(concert.id)}>Delete Concert</button></>)}
         </div>
     )}
 }

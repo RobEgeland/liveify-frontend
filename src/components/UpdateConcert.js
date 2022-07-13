@@ -39,7 +39,6 @@ const UpdateConcert = ({artists, concerts}) => {
         artist_id: updateConcert[0].artist_id,
         user_id: updateConcert[0].user_id
       })
-      console.log(updateConcert)
     },[])
     
 

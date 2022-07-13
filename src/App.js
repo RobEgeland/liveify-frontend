@@ -46,7 +46,7 @@ function App() {
           <Route exact path="/artists" element={ <ArtistList /> }/>
           <Route exact path="/artists/:id" element={ <ArtistDetails />}/>
           <Route exact path="/concerts" element={ <ConcertList /> }/>
-          <Route exact path="/concerts/:id" element={ <ConcertDetails />}/>
+          <Route exact path="/concerts/:id" element={ <ConcertDetails concerts={concerts} />}/>
           <Route exact path="/concerts/:id/update" element={ <UpdateConcert concerts={concerts} artists={artists}/>}/>
           <Route exact path="/users/:id/new" element={ <NewConcert artists={artists}/>} />
           <Route exact path="/users" element={ <UserList people={users} /> }/>

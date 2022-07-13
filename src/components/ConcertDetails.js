@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams, NavLink } from 'react-router-dom'
 
-const ConcertDetails = () => {
+const ConcertDetails = ({concerts}) => {
     const [concert, setConcert] = useState(null)
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
@@ -13,7 +13,14 @@ const ConcertDetails = () => {
             setConcert(data)
             setLoading(false)
         })
-    }, [])
+    }, [id])
+    // const currrentConcert = concerts.filter(concert => concert.id === parseInt(id))
+    // console.log(currrentConcert)
+
+    // useEffect(() => {
+    //     setConcert(currrentConcert[0])
+    //     setLoading(false)
+    // },[id])
 
     if (loading) {
         <h1>Loading...</h1>

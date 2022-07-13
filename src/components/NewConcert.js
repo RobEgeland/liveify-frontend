@@ -11,7 +11,7 @@ const NewConcert = ({artists}) => {
     location: "",
     venue: "",
     artist_id: "",
-    user_id: id,
+    user_id: parseInt(id),
   })
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const NewConcert = ({artists}) => {
     console.log(e.target.value)
     setState({
       ...state,
-      artist_id: e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
@@ -47,10 +47,18 @@ const NewConcert = ({artists}) => {
     const options = {
       method: "POST",
       headers,
-      body: JSON.stringify(state)
+      body: JSON.stringify({
+        name: state.name,
+        location: state.location,
+        venue: state.venue,
+        artist_id: state.artist_id,
+        user_id: state.user_id
+      })
     }
     fetch(`http://localhost:9393/concerts`, options)
-    navigate(`/concerts`)
+    .then(res => res.json())
+    .then(data => navigate(`/concerts/${data.id}`))
+    
   }
 
   if (loading) {
@@ -80,6 +88,7 @@ const NewConcert = ({artists}) => {
             <label>Who did you see?</label>
             <br/>
             <select name='artist_id' value={state.artist_id} onChange={handleArtistChange}>
+              <option value='' disabled selected hidden>Artists</option>
               {artists.map((artist, index) => <option key={index + 1} value={index + 1} >{artist.name}</option>)}
             </select>
         </div>
