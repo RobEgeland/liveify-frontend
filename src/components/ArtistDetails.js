@@ -13,7 +13,7 @@ const ArtistDetails = () => {
           setLoading(false)
           setArtist(data)
         })
-    }, [])
+    }, [id])
 
     if (loading) {
       <h1>Loading...</h1>
@@ -22,7 +22,7 @@ const ArtistDetails = () => {
     <div>
         <h1>{artist.name}</h1> 
         <h2>{artist.genre}</h2>
-       <NavLink to={`/concerts/${artist.concerts[0].id}`}><h3>{artist.concerts[0].name}</h3> </NavLink>
+       <NavLink to={`/concerts/${artist.concerts.id}`}><h3>{artist.concerts.name}</h3> </NavLink>
     </div>
   )
     }

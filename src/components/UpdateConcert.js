@@ -57,7 +57,7 @@ const UpdateConcert = ({artists, concerts}) => {
         fetch(`http://localhost:9393/concerts/${id}`, options)
         .then(res => res.json())
         .then(data => console.log(data))
-        navigate(`/concerts/${id}`)
+        navigate(`/concerts`)
       }
 
     function handleChange(e) {
