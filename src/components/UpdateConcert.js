@@ -15,31 +15,31 @@ const UpdateConcert = ({artists, concerts}) => {
       })
     
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:9393/concerts/${id}`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setConcert({
-    //           name: data.name,
-    //           location: data.location,
-    //           venue:data.venue,
-    //           artist_id: data.artist_id
-    //         })
-    //     })
-    // }, [])
-    
-    
-    const updateConcert = concerts.filter(concert => concert.id === parseInt(id))
     useEffect(() => {
-      console.log(updateConcert.location)
-      setConcert({
-        name: updateConcert[0].name,
-        location: updateConcert[0].location,
-        venue: updateConcert[0].venue,
-        artist_id: updateConcert[0].artist_id,
-        user_id: updateConcert[0].user_id
-      })
-    },[])
+        fetch(`http://localhost:9393/concerts/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            setConcert({
+              name: data.name,
+              location: data.location,
+              venue:data.venue,
+              artist_id: data.artist_id
+            })
+        })
+    }, [id])
+    
+    
+    // const updateConcert = concerts.filter(concert => concert.id === parseInt(id))
+    // useEffect(() => {
+    //   console.log(updateConcert.location)
+    //   setConcert({
+    //     name: updateConcert[0].name,
+    //     location: updateConcert[0].location,
+    //     venue: updateConcert[0].venue,
+    //     artist_id: updateConcert[0].artist_id,
+    //     user_id: updateConcert[0].user_id
+    //   })
+    // },[])
     
 
     function handleSubmit(e) {
